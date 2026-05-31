@@ -8,11 +8,11 @@ metadata:
 spec:
   project: default
 
-  # Source: GitOps repo chứa Helm chart
+  # Source: GitOps folder chứa Helm chart
   source:
-    repoURL: https://github.com/hoangbd1999/admin-console-k8s-config.git
+    repoURL: https://github.com/hoangbd1999/projectTestK8S.git
     targetRevision: master
-    path: charts/admin-console-backend
+    path: admin-console-k8s-config/charts/admin-console-backend
     helm:
       valueFiles:
         - values.yaml
