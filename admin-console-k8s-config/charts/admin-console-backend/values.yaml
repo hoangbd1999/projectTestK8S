@@ -59,8 +59,7 @@ resources:
 # Health Checks (Spring Boot Actuator)
 # ============================================
 livenessProbe:
-  httpGet:
-    path: /actuator/health
+  tcpSocket:
     port: 6001
   initialDelaySeconds: 60
   periodSeconds: 30
@@ -68,8 +67,7 @@ livenessProbe:
   failureThreshold: 3
 
 readinessProbe:
-  httpGet:
-    path: /actuator/health
+  tcpSocket:
     port: 6001
   initialDelaySeconds: 30
   periodSeconds: 10
