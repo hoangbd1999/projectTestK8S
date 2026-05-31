@@ -11,7 +11,7 @@ spec:
   # Source: GitOps repo chứa Helm chart
   source:
     repoURL: https://github.com/hoangbd1999/admin-console-k8s-config.git
-    targetRevision: main
+    targetRevision: master
     path: charts/admin-console-backend
     helm:
       valueFiles:
