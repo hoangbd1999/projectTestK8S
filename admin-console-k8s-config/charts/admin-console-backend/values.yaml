@@ -1,0 +1,142 @@
+# ============================================
+# Image Configuration
+# ============================================
+image:
+  repository: ghcr.io/REPLACE_WITH_YOUR_GITHUB_USERNAME/admin-console-backend
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+# Image pull secrets for private GHCR
+imagePullSecrets:
+  - name: ghcr-secret
+
+# ============================================
+# Replica & Scaling
+# ============================================
+replicaCount: 1
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+# ============================================
+# Service Configuration
+# ============================================
+service:
+  type: NodePort
+  port: 6001
+  targetPort: 6001
+  nodePort: 30601
+
+# ============================================
+# Ingress (disabled by default for local)
+# ============================================
+ingress:
+  enabled: false
+  className: nginx
+  annotations: {}
+  hosts:
+    - host: admin-console.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# ============================================
+# Resources
+# ============================================
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: 1000m
+    memory: 1024Mi
+
+# ============================================
+# Health Checks (Spring Boot Actuator)
+# ============================================
+livenessProbe:
+  httpGet:
+    path: /actuator/health
+    port: 6001
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /actuator/health
+    port: 6001
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# ============================================
+# Environment Variables (non-sensitive)
+# ============================================
+env:
+  SPRING_PROFILES_ACTIVE: "dev"
+  # Keycloak
+  KEYCLOAK_ADDRESS: "https://auth.elcomlab.com"
+  KEYCLOAK_PORT: "8443"
+  KEYCLOAK_REALM: "meta-sso-demo"
+  # Redis
+  REDIS_HOST: "192.168.10.69"
+  REDIS_PORT: "6380"
+  # PostgreSQL
+  POSTGRES_METAINT_ADDRESS: "192.168.10.69"
+  POSTGRES_METAINT_PORT: "5433"
+  # ClickHouse
+  CLICKHOUSE_METAINT_URL: "192.168.10.69:8124"
+  # Authz
+  HOST_IP_ADDRESS: "192.168.51.166"
+  HOST_IP_ADDRESS_: "192.168.51.166"
+  AUTHZ_PORT_API: "8282"
+  AUTHZ_PORT: "8283"
+  ADMIN_CONSOLE_AUTHZ_CLIENT_ID: "6755982c-cfa7-11ee-b79b-0242ac10ee03"
+  # Prometheus
+  PROMETHEUS_URLS: "http://192.168.10.69:9090"
+  # Socket
+  SOCKET_URL: "http://192.168.10.69:9997"
+  # Monitor
+  MONITOR_WEB_URL: "http://192.168.10.69:8903"
+  # Admin
+  ADMIN_USERNAME: "admin"
+
+# ============================================
+# Secret Environment Variables (sensitive)
+# ============================================
+secrets:
+  REDIS_PASSWORD: "bWV0YWNlbkAyMDIz"                          # metacen@2023 (base64)
+  PG_USERNAME: "bWV0YWNlbg=="                                   # metacen (base64)
+  PG_PASSWORD: "bWV0YWNlbkAyMDIz"                              # metacen@2023 (base64)
+  CH_USERNAME: "bWV0YWNlbg=="                                   # metacen (base64)
+  CH_PASSWORD: "bWV0YWNlbkAyMDIz"                              # metacen@2023 (base64)
+  ADMIN_PASSWORD: "ZWxjb21AMTIz"                                # elcom@123 (base64)
+  ADMIN_CONSOLE_AUTHZ_CLIENT_SECRET: "Tk5ObjY2VzdqOHRKRjR2bFh2aG1YMXdRWUhERk5ramMxQmY4OXI5MThSODFFQ0lx"  # base64
+  ADMIN_CONSOLE_KEYCLOAK_CLIENT_SECRET: "RUVWdXRWNUk4YVNwa3hJYk1UNzltY3hVdzlUUnBDTVk="  # base64
+
+# ============================================
+# Service Account
+# ============================================
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+# ============================================
+# Pod Configuration
+# ============================================
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/path: "/actuator/prometheus"
+  prometheus.io/port: "6001"
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

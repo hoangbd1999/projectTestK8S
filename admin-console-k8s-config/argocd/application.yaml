@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: admin-console-backend
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  # Source: GitOps repo chứa Helm chart
+  source:
+    repoURL: https://github.com/REPLACE_WITH_YOUR_GITHUB_USERNAME/admin-console-k8s-config.git
+    targetRevision: main
+    path: charts/admin-console-backend
+    helm:
+      valueFiles:
+        - values.yaml
+
+  # Destination: Deploy vào namespace admin-console
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: admin-console
+
+  # Sync Policy: Tự động sync khi có thay đổi
+  syncPolicy:
+    automated:
+      prune: true        # Xóa resources không còn trong Git
+      selfHeal: true      # Tự sửa nếu ai đó sửa trực tiếp trên cluster
+    syncOptions:
+      - CreateNamespace=true    # Tự tạo namespace nếu chưa có
+      - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s

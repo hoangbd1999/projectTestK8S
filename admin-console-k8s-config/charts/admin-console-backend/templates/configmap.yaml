@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "admin-console-backend.fullname" . }}-config
+  labels:
+    {{- include "admin-console-backend.labels" . | nindent 4 }}
+data:
+  {{- range $key, $value := .Values.env }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "admin-console-backend.fullname" . }}-logback
+  labels:
+    {{- include "admin-console-backend.labels" . | nindent 4 }}
+data:
+  logback.xml: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}.%M.%L - %msg%n</pattern>
+            </encoder>
+        </appender>
+        <appender name="ROLLIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>logs/adminconsole-backend.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>logs/adminconsole-backend.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <maxHistory>7</maxHistory>
+                <maxFileSize>100MB</maxFileSize>
+                <totalSizeCap>2GB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}.%M.%L - %msg%n</pattern>
+            </encoder>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="ROLLIN" />
+        </root>
+        <logger name="root" level="ERROR"/>
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="org.hibernate.SQL" level="OFF"/>
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+        <logger name="com.elcom.adminconsolebackend" level="INFO" additivity="false">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="ROLLIN" />
+        </logger>
+    </configuration>
