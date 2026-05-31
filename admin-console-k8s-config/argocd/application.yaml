@@ -10,7 +10,7 @@ spec:
 
   # Source: GitOps repo chứa Helm chart
   source:
-    repoURL: https://github.com/REPLACE_WITH_YOUR_GITHUB_USERNAME/admin-console-k8s-config.git
+    repoURL: https://github.com/hoangbd1999/admin-console-k8s-config.git
     targetRevision: main
     path: charts/admin-console-backend
     helm:

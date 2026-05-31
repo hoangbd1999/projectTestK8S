@@ -1,0 +1,46 @@
+# Build artifacts
+target/
+*.jar
+*.war
+*.class
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+logs/
+*.log
+
+# Maven
+!.mvn/wrapper/maven-wrapper.jar
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Kubernetes / Helm
+helm/
+k8s/
+
+# CI/CD
+.github/
+
+# Documentation
+*.md
+LICENSE
