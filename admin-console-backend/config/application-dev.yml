@@ -71,6 +71,8 @@ management:
       exposure:
         include: health,info,prometheus
   metrics:
+    tags:
+      application: admin-console-backend
     export:
       prometheus:
         enabled: true
