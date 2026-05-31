@@ -17,6 +17,7 @@ spec:
         {{- toYaml .Values.podAnnotations | nindent 8 }}
       labels:
         {{- include "admin-console-backend.selectorLabels" . | nindent 8 }}
+        application: {{ include "admin-console-backend.fullname" . }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
