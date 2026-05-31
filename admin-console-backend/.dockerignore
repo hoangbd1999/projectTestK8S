@@ -1,6 +1,6 @@
 # Build artifacts
-target/
-*.jar
+target/*
+!target/*.jar
 *.war
 *.class
 
