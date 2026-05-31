@@ -18,4 +18,6 @@ spec:
       path: /actuator/prometheus
       interval: 15s
       scrapeTimeout: 10s
+  podTargetLabels:
+    - application
 {{- end }}
