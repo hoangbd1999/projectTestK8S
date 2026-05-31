@@ -34,7 +34,7 @@ public class SecurityConfig {
         http.cors(httpSecurityCorsConfigurer -> {
             httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource());
         });
-        http.authorizeHttpRequests(request ->  request.requestMatchers(HttpMethod.GET, "/actuator/prometheus/**").permitAll()
+        http.authorizeHttpRequests(request ->  request.requestMatchers(HttpMethod.GET, "/actuator/prometheus", "/actuator/prometheus/**", "/actuator/health").permitAll()
                 .requestMatchers(HttpMethod.POST, "/monitors/**").permitAll()
                 .anyRequest()
                 .authenticated());
