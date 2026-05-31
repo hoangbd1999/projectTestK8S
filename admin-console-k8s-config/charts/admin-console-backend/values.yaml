@@ -138,3 +138,11 @@ podAnnotations:
 nodeSelector: {}
 tolerations: []
 affinity: {}
+
+# ============================================
+# ServiceMonitor for Prometheus Operator
+# ============================================
+serviceMonitor:
+  enabled: true
+  additionalLabels:
+    release: prometheus-stack
