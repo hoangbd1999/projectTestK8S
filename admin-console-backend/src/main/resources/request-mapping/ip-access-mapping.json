@@ -1,0 +1,46 @@
+[
+  {
+    "uri": "/ip-access/create",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.ip",
+        "resourceValueMapping": "*",
+        "actionMapping": "create"
+      }
+    ]
+  },
+  {
+    "uri": "/ip-access/update",
+    "method": "PUT",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.ip",
+        "resourceValueMapping": "*",
+        "actionMapping": "update"
+      }
+    ]
+  },
+  {
+    "uri": "/ip-access/delete",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.ip",
+        "resourceValueMapping": "*",
+        "actionMapping": "delete"
+      }
+    ]
+  },
+  {
+    "uri": "/ip-access/filter",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.ip",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  }
+]

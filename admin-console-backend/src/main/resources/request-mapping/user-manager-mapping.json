@@ -1,0 +1,102 @@
+[
+  {
+    "uri": "/user-manager/filter",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/user-manager/filter/task/assigned",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/user-manager/{userId}",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "get"
+      }
+    ]
+  },
+  {
+    "uri": "/user-manager",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "create"
+      }
+    ]
+  },
+  {
+    "uri": "/user-manager/{userId}",
+    "method": "PUT",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "update"
+      }
+    ]
+  },
+  {
+    "uri": "/user-manager/reset-password/{userId}",
+    "method": "PUT",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "update"
+      }
+    ]
+  },
+  {
+    "uri": "/user-manager/{userId}",
+    "method": "DELETE",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "delete"
+      }
+    ]
+  },
+  {
+    "uri": "/user-manager/resources",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  }
+  ,
+  {
+    "uri": "/user-manager/event",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "uri": "/dashboard/user",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.dashboard",
+        "resourceValueMapping": "*",
+        "actionMapping": "get"
+      }
+    ]
+  },
+  {
+    "uri": "/dashboard/group",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.dashboard",
+        "resourceValueMapping": "*",
+        "actionMapping": "get"
+      }
+    ]
+  },
+  {
+    "uri": "/dashboard/login",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.dashboard",
+        "resourceValueMapping": "*",
+        "actionMapping": "get"
+      }
+    ]
+  }
+]

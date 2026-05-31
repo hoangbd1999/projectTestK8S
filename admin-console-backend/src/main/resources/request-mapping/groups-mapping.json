@@ -1,0 +1,133 @@
+[
+  {
+    "uri": "/groups",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "create"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/filter",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/{groupId}",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "get"
+      }
+    ]
+  },
+  {
+    "uri": "/groups",
+    "method": "DELETE",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "delete"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/{groupId}",
+    "method": "PUT",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "update"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/{groupId}/status",
+    "method": "PUT",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "update"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/parse-to-username",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      },
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/parse-to-group-name-and-username",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      },
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/available",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/available/task/assigned",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/groups/get-group-by-user",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "get"
+      }
+    ]
+  }
+]

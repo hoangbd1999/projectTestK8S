@@ -1,0 +1,57 @@
+[
+  {
+    "uri": "/history/filter",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/history/report/user",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/history/report/resource",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.user",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/history/filter/group",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  },
+  {
+    "uri": "/history/filter/group/{groupId}",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.group",
+        "resourceValueMapping": "*",
+        "actionMapping": "list"
+      }
+    ]
+  }
+]

@@ -1,0 +1,91 @@
+server:
+  port: 6001
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth.elcomlab.com:8443/auth/realms/meta-sso-demo
+  data:
+    redis:
+      host: 192.168.10.69
+      port: 6380
+      password: metacen@2023
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+    open-in-view: false
+  #  database: postgresql
+    hibernate:
+      ddl-auto: none
+  datasource:
+    clickhouse:
+      driver-class-name: com.clickhouse.jdbc.ClickHouseDriver
+      url: jdbc:clickhouse://192.168.10.69:8124?socket_timeout=180000
+      username: metacen
+      password: metacen@2023
+    management:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://192.168.10.69:5433/metacen?currentSchema=admin_console
+      username: metacen
+      password: metacen@2023
+authz:
+  server:
+    url: http://192.168.51.166:8282/v1/auth
+    host: 192.168.51.166
+    port: 8283
+    client-id: 6755982c-cfa7-11ee-b79b-0242ac10ee03
+    client-secret: NNNn66W7j8tJF4vlXvhmX1wQYHDFNkjc1Bf89r918R81ECIq
+    username: admin
+    password: elcom@123
+    clearCacheUrl: http://192.168.10.69:6262/v1/cache/invalidate
+keycloak:
+  deployment:
+    realm: meta-sso-demo
+    auth-server-url: https://auth.elcomlab.com:8443/auth/
+    resource: admin-console-backend
+  admin:
+    realm: meta-sso-demo
+    client-id: admin-console-backend
+    clientSecret: EEVutV5I8aSpkxIbMT79mcxUw9TRpCMY
+    server-url: https://auth.elcomlab.com:8443/auth/
+uri:
+  prefix: adminconsole-api
+
+app:
+  timezone: Asia/Ho_Chi_Minh
+
+service:
+  communication:
+    key: plZJ9AouYaXzM7eP50CXgc3qmjVgZnYv
+
+PROMETHEUS_URL: http://192.168.10.69:9090/api/v1/query
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: true
+
+socket:
+  service:
+    url: http://192.168.10.69:9997
+
+Service_Monitor: http://192.168.10.69:8903/monitor/service/
+Server_Monitor: http://192.168.10.69:8903/monitor/server/
+logging:
+  config: ${user.dir}/config/logback.xml
+
+
+

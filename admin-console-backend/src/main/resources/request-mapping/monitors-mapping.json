@@ -1,0 +1,24 @@
+[
+  {
+    "uri": "/monitors",
+    "method": "POST",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.monitor",
+        "resourceValueMapping": "*",
+        "actionMapping": "create"
+      }
+    ]
+  },
+  {
+    "uri": "/monitors/check-status-server/{ip}",
+    "method": "GET",
+    "mappingResources": [
+      {
+        "resourceKindMapping": "metaint.adminconsole.monitor",
+        "resourceValueMapping": "*",
+        "actionMapping": "get"
+      }
+    ]
+  }
+]

@@ -1,0 +1,91 @@
+server:
+  port: 6001
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ADDRESS}:${KEYCLOAK_PORT}/auth/realms/${KEYCLOAK_REALM}
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+    open-in-view: false
+    #  database: postgresql
+    hibernate:
+      ddl-auto: none
+  datasource:
+    clickhouse:
+      driver-class-name: com.clickhouse.jdbc.ClickHouseDriver
+      url: jdbc:clickhouse://${CLICKHOUSE_METAINT_URL}?socket_timeout=180000
+      username: ${CH_USERNAME:metacen}
+      password: ${CH_PASSWORD:metacen@2023}
+    management:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://${POSTGRES_METAINT_ADDRESS}:${POSTGRES_METAINT_PORT}/metacen?currentSchema=admin_console
+      username: ${PG_USERNAME:metacen}
+      password: ${PG_PASSWORD:metacen@2023}
+authz:
+  server:
+    url: http://${HOST_IP_ADDRESS}:${AUTHZ_PORT_API}/v1/auth
+    host: ${HOST_IP_ADDRESS_}
+    port: ${AUTHZ_PORT}
+    client-id: ${ADMIN_CONSOLE_AUTHZ_CLIENT_ID}
+    client-secret: ${ADMIN_CONSOLE_AUTHZ_CLIENT_SECRET}
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:elcom@123}
+    clearCacheUrl: http://${HOST_IP_ADDRESS}:${AUTHZ_PORT_API}/v1/cache/invalidate
+keycloak:
+  deployment:
+    realm: ${KEYCLOAK_REALM}
+    auth-server-url: ${KEYCLOAK_ADDRESS}:${KEYCLOAK_PORT}/auth
+    resource: admin-console-backend
+  admin:
+    realm: ${KEYCLOAK_REALM}
+    client-id: admin-console-backend
+    clientSecret: ${ADMIN_CONSOLE_KEYCLOAK_CLIENT_SECRET}
+    server-url: ${KEYCLOAK_ADDRESS}:${KEYCLOAK_PORT}/auth/
+uri:
+  prefix: adminconsole-api
+
+app:
+  timezone: Asia/Ho_Chi_Minh
+
+service:
+  communication:
+    key: plZJ9AouYaXzM7eP50CXgc3qmjVgZnYv
+
+PROMETHEUS_URL: ${PROMETHEUS_URLS}/api/v1/query
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: true
+
+socket:
+  service:
+    url: ${SOCKET_URL}
+
+Service_Monitor: ${MONITOR_WEB_URL}/monitor/service/
+Server_Monitor: ${MONITOR_WEB_URL}/monitor/server/
+logging:
+  config: ${user.dir}/config/logback.xml
+
+
+
