@@ -79,6 +79,7 @@ readinessProbe:
 # ============================================
 env:
   SPRING_PROFILES_ACTIVE: "dev"
+  MANAGEMENT_METRICS_TAGS_APPLICATION: "admin-console-backend"
   # Keycloak
   KEYCLOAK_ADDRESS: "https://auth.elcomlab.com"
   KEYCLOAK_PORT: "8443"
