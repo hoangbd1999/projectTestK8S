@@ -39,6 +39,12 @@ jobs:
           cache: maven
           cache-dependency-path: admin-console-backend/pom.xml
 
+      # 2.5 Install local Maven dependencies (parent pom and authz-sdk)
+      - name: Install Local Maven Dependencies
+        run: |
+          mvn install:install-file -Dfile=admin-console-backend/local-repo/admin-console-backend-service-0.0.1.pom -DgroupId=com.elcom -DartifactId=admin-console-backend-service -Dversion=0.0.1 -Dpackaging=pom
+          mvn install:install-file -Dfile=admin-console-backend/local-repo/authz-sdk-0.0.1.jar -DpomFile=admin-console-backend/local-repo/authz-sdk-0.0.1.pom
+
       # 3. Build with Maven
       - name: Build with Maven
         working-directory: admin-console-backend
