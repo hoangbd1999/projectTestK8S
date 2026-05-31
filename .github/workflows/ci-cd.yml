@@ -3,8 +3,6 @@ name: CI/CD - Build, Push & Update ArgoCD
 on:
   push:
     branches: [ master ]
-    paths:
-      - 'admin-console-backend/**'
   workflow_dispatch:
 
 env:
